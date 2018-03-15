@@ -6,6 +6,9 @@
 //         [windows - microsoft mpi]
 //         mpiexec -np 2 bin\fdtd_mpi
 
+// run with 
+// bin\fdtd_mpi.exe ..\Antenne_lin_constant.dat ..\Obj_prop.dat
+
 #include "vtl.h"
 #include "vtlSPoints.h"
 
@@ -779,7 +782,7 @@ int main(int argc, char **argv){
 		Hz_front_send[j] = 0;
 	}	
  
-
+    std::cout << "Begining of the algorithm" << std::endl;
 /********************************************************************************
 			Begining of the algorithm.
 ********************************************************************************/
@@ -1256,20 +1259,20 @@ int main(int argc, char **argv){
 		/*Storage of the Results*/
 
 		if(step%SR==0){//save results of the mpi process to disk
-			//export_spoints_XML("Ex", step, grid_Ex, mygrid_Ex, ZIPPED);
-		  	//export_spoints_XML("Ey", step, grid_Ey, mygrid_Ey, ZIPPED);
-			//export_spoints_XML("Ez", step, grid_Ez, mygrid_Ez, ZIPPED);
-			//export_spoints_XML("Hx", step, grid_Hx, mygrid_Hx, ZIPPED);
-			//export_spoints_XML("Hy", step, grid_Hy, mygrid_Hy, ZIPPED);
-			//export_spoints_XML("Hz", step, grid_Hz, mygrid_Hz, ZIPPED);
+			export_spoints_XML("Ex", step, grid_Ex, mygrid_Ex, ZIPPED);
+		  	export_spoints_XML("Ey", step, grid_Ey, mygrid_Ey, ZIPPED);
+			export_spoints_XML("Ez", step, grid_Ez, mygrid_Ez, ZIPPED);
+			export_spoints_XML("Hx", step, grid_Hx, mygrid_Hx, ZIPPED);
+			export_spoints_XML("Hy", step, grid_Hy, mygrid_Hy, ZIPPED);
+			export_spoints_XML("Hz", step, grid_Hz, mygrid_Hz, ZIPPED);
 
             		if (myrank == 0){	// save main pvti file by rank0
-				//export_spoints_XMLP("Ex", step, grid_Ex, mygrid_Ex, sgrids_Ex, ZIPPED);
-                		//export_spoints_XMLP("Ey", step, grid_Ey, mygrid_Ey, sgrids_Ey, ZIPPED);
-				//export_spoints_XMLP("Ez", step, grid_Ez, mygrid_Ez, sgrids_Ez, ZIPPED);
-				//export_spoints_XMLP("Hx", step, grid_Hx, mygrid_Hx, sgrids_Hx, ZIPPED);
-				//export_spoints_XMLP("Hy", step, grid_Hy, mygrid_Hy, sgrids_Hy, ZIPPED);
-				//export_spoints_XMLP("Hz", step, grid_Hz, mygrid_Hz, sgrids_Hz, ZIPPED);
+				export_spoints_XMLP("Ex", step, grid_Ex, mygrid_Ex, sgrids_Ex, ZIPPED);
+                export_spoints_XMLP("Ey", step, grid_Ey, mygrid_Ey, sgrids_Ey, ZIPPED);
+				export_spoints_XMLP("Ez", step, grid_Ez, mygrid_Ez, sgrids_Ez, ZIPPED);
+				export_spoints_XMLP("Hx", step, grid_Hx, mygrid_Hx, sgrids_Hx, ZIPPED);
+				export_spoints_XMLP("Hy", step, grid_Hy, mygrid_Hy, sgrids_Hy, ZIPPED);
+				export_spoints_XMLP("Hz", step, grid_Hz, mygrid_Hz, sgrids_Hz, ZIPPED);
             		}
         	}
 		step++;
@@ -1277,7 +1280,7 @@ int main(int argc, char **argv){
 /********************************************************************************
 			Liberation of the memory.
 ********************************************************************************/
-
+    std::cout << "freeing memory..." << std::endl;
 	//Electric field
 	for(i=0;i<point_per_proc_x[myrank]+lastx;i++){		
 		for(j=0;j<point_per_proc_y[myrank]-1;j++){		
