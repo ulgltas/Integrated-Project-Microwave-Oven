@@ -68,9 +68,9 @@ target_link_libraries(CoupledSolver ${DMUMPSLIB} ${COMMONLIB} ${PORDLIB})
 #target_link_libraries(CoupledSolver -pthread -I/usr/lib/openmpi/lib -Wl,-rpath -Wl,/usr/lib/openmpi/lib -Wl,--enable-new-dtags -L/usr/lib/openmpi/lib -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi)
 
 # nic4
-target_link_libraries(CoupledSolver -lgfortran)
-target_link_libraries(CoupledSolver  $ENV{MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a -Wl,--start-group $ENV{MKLROOT}/lib/intel64/libmkl_gf_lp64.a $ENV{MKLROOT}/lib/intel64/libmkl_gnu_thread.a $ENV{MKLROOT}/lib/intel64/libmkl_core.a $ENV{MKLROOT}/lib/intel64/libmkl_blacs_openmpi_lp64.a -Wl,--end-group -lgomp -lpthread -lm -ldl)
-target_link_libraries(CoupledSolver -pthread -I/cm/shared/apps/openmpi/1.6.4/gcc-4.9.2/lib -L/cm/shared/apps/openmpi/1.6.4/gcc-4.9.2/lib -lmpi_f90 -lmpi_f77 -lmpi -losmcomp -lrdmacm -libverbs -lrt -lnsl -lutil -lm -lpsm_infinipath -ldl -lm -lnuma -Wl,--export-dynamic -lrt -lnsl -lutil -lm -ldl)
+#target_link_libraries(CoupledSolver -lgfortran)
+#target_link_libraries(CoupledSolver  $ENV{MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a -Wl,--start-group $ENV{MKLROOT}/lib/intel64/libmkl_gf_lp64.a $ENV{MKLROOT}/lib/intel64/libmkl_gnu_thread.a $ENV{MKLROOT}/lib/intel64/libmkl_core.a $ENV{MKLROOT}/lib/intel64/libmkl_blacs_openmpi_lp64.a -Wl,--end-group -lgomp -lpthread -lm -ldl)
+#target_link_libraries(CoupledSolver -pthread -I/cm/shared/apps/openmpi/1.6.4/gcc-4.9.2/lib -L/cm/shared/apps/openmpi/1.6.4/gcc-4.9.2/lib -lmpi_f90 -lmpi_f77 -lmpi -losmcomp -lrdmacm -libverbs -lrt -lnsl -lutil -lm -lpsm_infinipath -ldl -lm -lnuma -Wl,--export-dynamic -lrt -lnsl -lutil -lm -ldl)
 
 
 

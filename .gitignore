@@ -3,3 +3,6 @@
 *~
 build/
 build/*
+
+*.vti
+Cut*step*.txt
